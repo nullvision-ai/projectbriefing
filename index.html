@@ -553,6 +553,47 @@
   const projetoInput = document.querySelector('input[name="projeto"]');
   let selectedCat = null;
 
+  /* ------------------------------------------------------------------
+     Camada de analytics — independente de provedor.
+
+     Nenhum script de analytics esta instalado ainda. Esta funcao ja
+     dispara os eventos do funil; assim que o snippet do provedor for
+     colado no <head>, os eventos comecam a ser registrados sozinhos,
+     sem precisar mexer em nada aqui embaixo.
+
+     Suporta Umami (umami.track), Google Analytics (gtag) e Meta Pixel
+     (fbq). Falha sempre em silencio: analytics nunca pode quebrar o
+     formulario.
+  ------------------------------------------------------------------ */
+  function track(evento, dados) {
+    try {
+      if (window.umami && typeof window.umami.track === 'function') {
+        window.umami.track(evento, dados || {});
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', evento, dados || {});
+      }
+      // O Meta Pixel so entende os eventos padrao dele; o envio do
+      // briefing e um "Lead". Os outros passos vao como customizados.
+      if (typeof window.fbq === 'function') {
+        if (evento === 'briefing_enviado') fbq('track', 'Lead', dados || {});
+        else fbq('trackCustom', evento, dados || {});
+      }
+    } catch (e) { /* silencio proposital */ }
+  }
+
+  // Marca de onde veio a visita (?utm_source=...), para cruzar com o
+  // campo "como conheceu" do formulario.
+  const params = new URLSearchParams(location.search);
+  const origemLink = params.get('utm_source') || 'direto';
+
+  let formIniciado = false;
+  function marcarInicioForm() {
+    if (formIniciado) return;
+    formIniciado = true;
+    track('formulario_iniciado', { categoria: fCategoria.value, origem: origemLink });
+  }
+
   function selectCat(card) {
     catCards.forEach(c => {
       c.classList.remove('active');
@@ -570,6 +611,7 @@
     });
 
     formSection.style.display = 'block';
+    track('categoria_escolhida', { categoria: catLabels[cat], origem: origemLink });
     setTimeout(() => {
       formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 80);
@@ -601,6 +643,25 @@
   const submitBtn = document.getElementById('submit-btn');
   const statusMsg = document.getElementById('status-msg');
   const successScreen = document.getElementById('success-screen');
+
+  // "Comecou a preencher" = primeiro toque em qualquer campo. E o passo
+  // que separa quem so olhou o formulario de quem tentou responder.
+  form.addEventListener('input', marcarInicioForm, { once: true });
+  form.addEventListener('change', marcarInicioForm, { once: true });
+
+  // Cliques de saida para WhatsApp e Instagram. Delegado no document
+  // porque o link de WhatsApp da mensagem de erro so e criado depois,
+  // entao um listener ligado direto no elemento nao o alcancaria.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    const wa = a.href.indexOf('wa.me') > -1;
+    const ig = a.href.indexOf('instagram.com') > -1;
+    if (!wa && !ig) return;
+    const onde = a.closest('.success-screen') ? 'tela_final'
+               : a.closest('#status-msg') ? 'erro_envio' : 'topo';
+    track('saiu_para_' + (wa ? 'whatsapp' : 'instagram'), { onde: onde, origem: origemLink });
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -635,6 +696,12 @@
       });
 
       if (response.ok) {
+        track('briefing_enviado', {
+          categoria: fCategoria.value,
+          orcamento: (form.querySelector('[name="orcamento"]') || {}).value || 'nao informado',
+          origem_declarada: (form.querySelector('[name="origem"]') || {}).value || 'nao informado',
+          origem: origemLink
+        });
         window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
         successScreen.classList.add('visible');
@@ -642,6 +709,7 @@
         throw new Error('submit failed');
       }
     } catch (err) {
+      track('envio_falhou', { categoria: fCategoria.value, origem: origemLink });
       statusMsg.innerHTML = 'Não conseguimos enviar automaticamente — desculpa o transtorno. ' +
         '<a href="https://wa.me/5511984111761?text=Ol%C3%A1%2C%20tentei%20enviar%20o%20briefing%20pelo%20site%20e%20deu%20erro." ' +
         'target="_blank" rel="noopener" style="color:#e08888;text-decoration:underline">Fala com a gente no WhatsApp</a> ' +
