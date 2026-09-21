@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>nullvision — briefing de projeto</title>
 <meta name="description" content="Conte sua ideia. A nullvision renderiza. Envie o briefing do seu projeto cinematic, motion ou design.">
+<link rel="canonical" href="https://nullvision-ai.github.io/projectbriefing/">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- Preview ao compartilhar (WhatsApp, Direct, Telegram, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="nullvision">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://nullvision-ai.github.io/projectbriefing/">
+<meta property="og:title" content="nullvision — conte sua ideia, a gente renderiza">
+<meta property="og:description" content="Briefing de projeto em 2 minutos. Cinematic, motion ou design — preencha o que souber, o resto é opcional.">
+<meta property="og:image" content="https://nullvision-ai.github.io/projectbriefing/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="nullvision — conte sua ideia. A gente renderiza.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nullvision — conte sua ideia, a gente renderiza">
+<meta name="twitter:description" content="Briefing de projeto em 2 minutos. Cinematic, motion ou design.">
+<meta name="twitter:image" content="https://nullvision-ai.github.io/projectbriefing/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' fill='%230a0a0a'/%3E%3Ccircle cx='28' cy='28' r='20' fill='none' stroke='%23555' stroke-width='3'/%3E%3Ccircle cx='28' cy='28' r='9' fill='%23c0392b'/%3E%3C/svg%3E">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,6 +71,13 @@
     transition: opacity .15s ease;
   }
   .btn-scroll:hover { opacity: 0.85; }
+  .hero-alt-contact { margin-top: 18px; }
+  .link-whatsapp {
+    font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 0.06em;
+    color: #666; text-decoration: none; border-bottom: 0.5px solid #333;
+    padding-bottom: 2px; transition: color .15s ease, border-color .15s ease;
+  }
+  .link-whatsapp:hover { color: #999; border-color: #666; }
 
   /* SECTION GENERIC */
   section { padding: 56px 0; border-bottom: 0.5px solid #1e1e1e; }
@@ -85,6 +112,14 @@
   }
   label .opt { color: #555; font-size: 10px; font-family: 'Poppins', Arial, sans-serif; font-weight: 700; margin-left: 6px; text-transform: uppercase; }
   label .req { color: #c0392b; margin-left: 4px; }
+  .field-hint { font-size: 11px; color: #5a5a5a; margin-top: 7px; line-height: 1.5; }
+  /* foco visivel para navegacao por teclado */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible, .cat-card:focus-visible,
+  .pill-option:focus-visible {
+    outline: 2px solid #c0392b; outline-offset: 3px;
+  }
+  .cat-card:focus-visible { border-color: #c0392b; }
   input[type=text], input[type=email], input[type=tel], input[type=date], select, textarea {
     width: 100%;
     background: #111;
@@ -148,6 +183,14 @@
   .success-screen h2 { font-size: 30px; font-weight: 600; margin-bottom: 16px; color: #e8e4dc; }
   .success-screen p { color: #999; font-size: 14px; max-width: 420px; margin: 0 auto; }
   .success-screen p.success-tag { margin-top: 18px; font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.1em; color: #c0392b; }
+  .success-links { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; align-items: center; }
+  .success-links a {
+    font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.06em;
+    color: #888; text-decoration: none; border-bottom: 0.5px solid #333; padding-bottom: 3px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .success-links a:hover { color: #e8e4dc; border-color: #666; }
+  .privacy-note { margin-top: 20px; font-size: 11px; color: #555; line-height: 1.6; max-width: 520px; }
 
   footer {
     padding: 40px 0 60px; text-align: center;
@@ -208,6 +251,9 @@
   <div class="hero-cta">
     <a href="#categorias" class="btn-scroll">começar briefing ↓</a>
   </div>
+  <div class="hero-alt-contact">
+    <a href="https://wa.me/5511984111761?text=Ol%C3%A1%2C%20tenho%20uma%20ideia%20de%20projeto%20e%20prefiro%20conversar%20antes%20de%20preencher%20o%20briefing." class="link-whatsapp" target="_blank" rel="noopener">já sabe o que quer? fale direto pelo whatsapp →</a>
+  </div>
 </div>
 
 <section id="categorias">
@@ -217,19 +263,19 @@
     <p class="section-sub">Cada categoria tem seu próprio formulário — clique na que combina com o que você tem em mente. Na dúvida, escolha a mais próxima; a gente ajusta juntos.</p>
 
     <div class="cat-grid">
-      <div class="cat-card" data-cat="cinematic">
+      <div class="cat-card" data-cat="cinematic" role="button" tabindex="0" aria-pressed="false">
         <span class="cat-check">✓</span>
         <div class="cat-dot" style="background:#c0392b;"></div>
         <div class="cat-card-name">◉ CINEMATIC</div>
         <div class="cat-card-desc">Takes dramáticos, retratos, atmosfera cinematográfica. Live action gerado por IA — parece filmado de verdade.</div>
       </div>
-      <div class="cat-card" data-cat="motion">
+      <div class="cat-card" data-cat="motion" role="button" tabindex="0" aria-pressed="false">
         <span class="cat-check">✓</span>
         <div class="cat-dot" style="background:#888;"></div>
         <div class="cat-card-name">◉ MOTION</div>
         <div class="cat-card-desc">Animações gráficas, logo animado, type motion. Forte para reforço de marca e produto em movimento.</div>
       </div>
-      <div class="cat-card" data-cat="design">
+      <div class="cat-card" data-cat="design" role="button" tabindex="0" aria-pressed="false">
         <span class="cat-check">✓</span>
         <div class="cat-dot" style="background:#e8e4dc;"></div>
         <div class="cat-card-name">◉ DESIGN</div>
@@ -253,32 +299,66 @@
       <div class="section-block-title">Sobre você e o projeto</div>
       <div class="field-row field-group">
         <div>
-          <label>Seu nome <span class="req">*</span></label>
-          <input type="text" name="nome" required placeholder="Como podemos te chamar">
+          <label for="f-nome">Seu nome <span class="req">*</span></label>
+          <input type="text" id="f-nome" name="nome" required autocomplete="name" placeholder="Como podemos te chamar">
         </div>
         <div>
-          <label>E-mail <span class="req">*</span></label>
-          <input type="email" name="email" required placeholder="voce@empresa.com">
-        </div>
-      </div>
-      <div class="field-row field-group">
-        <div>
-          <label>WhatsApp / telefone <span class="opt">opcional</span></label>
-          <input type="tel" name="whatsapp" placeholder="(00) 00000-0000">
-        </div>
-        <div>
-          <label>Nome do projeto / marca <span class="opt">opcional</span></label>
-          <input type="text" name="projeto" placeholder="Ex: lançamento tênis X">
+          <label for="f-email">E-mail <span class="req">*</span></label>
+          <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="voce@empresa.com">
         </div>
       </div>
       <div class="field-row field-group">
         <div>
-          <label>Prazo desejado de entrega <span class="opt">opcional</span></label>
-          <input type="date" name="prazo_entrega">
+          <label for="f-whatsapp">WhatsApp / telefone <span class="opt">opcional</span></label>
+          <input type="tel" id="f-whatsapp" name="whatsapp" autocomplete="tel" placeholder="(00) 00000-0000">
         </div>
         <div>
-          <label>Data de publicação / apresentação <span class="opt">opcional</span></label>
-          <input type="date" name="data_publicacao">
+          <label for="f-projeto">Nome do projeto / marca <span class="opt">opcional</span></label>
+          <input type="text" id="f-projeto" name="projeto" placeholder="Ex: lançamento tênis X">
+        </div>
+      </div>
+      <div class="field-row field-group">
+        <div>
+          <label for="f-prazo">Prazo desejado de entrega <span class="opt">opcional</span></label>
+          <select id="f-prazo" name="prazo_entrega">
+            <option value="">Selecione</option>
+            <option>Urgente — menos de 24h</option>
+            <option>Esta semana</option>
+            <option>Em até 2 semanas</option>
+            <option>Em até 1 mês</option>
+            <option>Sem data definida</option>
+          </select>
+        </div>
+        <div>
+          <label for="f-publicacao">Data de publicação / apresentação <span class="opt">opcional</span></label>
+          <input type="date" id="f-publicacao" name="data_publicacao">
+        </div>
+      </div>
+      <div class="field-row field-group">
+        <div>
+          <label for="f-orcamento">Orçamento previsto <span class="opt">opcional</span></label>
+          <select id="f-orcamento" name="orcamento">
+            <option value="">Selecione</option>
+            <option>Até R$ 500</option>
+            <option>R$ 500 – R$ 1.000</option>
+            <option>R$ 1.000 – R$ 2.500</option>
+            <option>R$ 2.500 – R$ 5.000</option>
+            <option>Acima de R$ 5.000</option>
+            <option>Não sei ainda — quero uma recomendação</option>
+          </select>
+          <div class="field-hint">Serve só pra calibrar o escopo na primeira proposta. Nenhuma faixa desqualifica seu projeto.</div>
+        </div>
+        <div>
+          <label for="f-origem">Como conheceu a nullvision? <span class="opt">opcional</span></label>
+          <select id="f-origem" name="origem">
+            <option value="">Selecione</option>
+            <option>Instagram</option>
+            <option>Indicação de alguém</option>
+            <option>TikTok</option>
+            <option>LinkedIn</option>
+            <option>Google / busca</option>
+            <option>Outro</option>
+          </select>
         </div>
       </div>
 
@@ -416,10 +496,10 @@
         <div class="field-group">
           <label>Formato de exportação final <span class="opt">opcional</span></label>
           <div class="check-group" id="design-formatos">
-            <label class="pill-option"><input type="checkbox" name="design_formato" value="HTML interativo"><span>HTML interativo</span></label>
-            <label class="pill-option"><input type="checkbox" name="design_formato" value="PPTX"><span>PPTX</span></label>
-            <label class="pill-option"><input type="checkbox" name="design_formato" value="PDF"><span>PDF</span></label>
-            <label class="pill-option"><input type="checkbox" name="design_formato" value="Canva"><span>Canva</span></label>
+            <label class="pill-option" tabindex="0" role="checkbox" aria-checked="false"><input type="checkbox" name="design_formato" value="HTML interativo"><span>HTML interativo</span></label>
+            <label class="pill-option" tabindex="0" role="checkbox" aria-checked="false"><input type="checkbox" name="design_formato" value="PPTX"><span>PPTX</span></label>
+            <label class="pill-option" tabindex="0" role="checkbox" aria-checked="false"><input type="checkbox" name="design_formato" value="PDF"><span>PDF</span></label>
+            <label class="pill-option" tabindex="0" role="checkbox" aria-checked="false"><input type="checkbox" name="design_formato" value="Canva"><span>Canva</span></label>
           </div>
         </div>
       </div>
@@ -438,7 +518,11 @@
         <button type="submit" class="btn-submit" id="submit-btn">enviar briefing →</button>
         <span class="submit-note">Você recebe uma confirmação aqui na tela assim que enviar.</span>
       </div>
-      <div id="status-msg"></div>
+      <p class="privacy-note">
+        Seus dados são usados só para responder a este briefing e montar a proposta. Não compartilhamos com
+        ninguém e não enviamos newsletter. Quer que a gente apague tudo? É só pedir por e-mail ou WhatsApp.
+      </p>
+      <div id="status-msg" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -450,7 +534,11 @@
 <div class="success-screen" id="success-screen">
   <div class="cat-dot" style="background:#c0392b;"></div>
   <h2>Briefing recebido.</h2>
-  <p>Obrigado! A nullvision já recebeu seu projeto e vai entrar em contato em breve pelo e-mail ou WhatsApp informado.</p>
+  <p>Obrigado! A nullvision já recebeu seu projeto e vai entrar em contato em até 1 dia útil pelo e-mail ou WhatsApp informado.</p>
+  <div class="success-links">
+    <a href="https://www.instagram.com/nullvision.ai/" target="_blank" rel="noopener">ver nosso trabalho no instagram →</a>
+    <a href="https://wa.me/5511984111761?text=Oi%2C%20acabei%20de%20enviar%20um%20briefing%20pelo%20site." target="_blank" rel="noopener">adiantar a conversa no whatsapp →</a>
+  </div>
   <p class="success-tag">◉ we render what you imagine.</p>
 </div>
 
@@ -465,31 +553,47 @@
   const projetoInput = document.querySelector('input[name="projeto"]');
   let selectedCat = null;
 
+  function selectCat(card) {
+    catCards.forEach(c => {
+      c.classList.remove('active');
+      c.setAttribute('aria-pressed', 'false');
+    });
+    card.classList.add('active');
+    card.setAttribute('aria-pressed', 'true');
+    const cat = card.dataset.cat;
+    selectedCat = cat;
+    fCategoria.value = catLabels[cat];
+    formTitle.textContent = 'Sobre o projeto — ' + catLabels[cat];
+
+    catFieldGroups.forEach(group => {
+      group.style.display = (group.dataset.cat === cat) ? 'block' : 'none';
+    });
+
+    formSection.style.display = 'block';
+    setTimeout(() => {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }
+
   catCards.forEach(card => {
-    card.addEventListener('click', () => {
-      catCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      const cat = card.dataset.cat;
-      selectedCat = cat;
-      fCategoria.value = catLabels[cat];
-      formTitle.textContent = 'Sobre o projeto — ' + catLabels[cat];
-
-      catFieldGroups.forEach(group => {
-        group.style.display = (group.dataset.cat === cat) ? 'block' : 'none';
-      });
-
-      formSection.style.display = 'block';
-      setTimeout(() => {
-        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
+    card.addEventListener('click', () => selectCat(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCat(card); }
     });
   });
 
+  // O checkbox real esta com display:none, entao o clique chega sempre pela label.
   document.querySelectorAll('#design-formatos .pill-option').forEach(pill => {
-    pill.addEventListener('click', () => {
-      const input = pill.querySelector('input');
-      input.checked = !input.checked;
+    const input = pill.querySelector('input');
+    const sync = () => {
       pill.classList.toggle('selected', input.checked);
+      pill.setAttribute('aria-checked', String(input.checked));
+    };
+    pill.addEventListener('click', () => { input.checked = !input.checked; sync(); });
+    pill.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); input.checked = !input.checked; sync();
+      }
     });
   });
 
@@ -538,7 +642,10 @@
         throw new Error('submit failed');
       }
     } catch (err) {
-      statusMsg.textContent = 'Não conseguimos enviar automaticamente. Manda esse briefing direto pra contato.mateusaraujom@gmail.com, por favor — desculpa o transtorno.';
+      statusMsg.innerHTML = 'Não conseguimos enviar automaticamente — desculpa o transtorno. ' +
+        '<a href="https://wa.me/5511984111761?text=Ol%C3%A1%2C%20tentei%20enviar%20o%20briefing%20pelo%20site%20e%20deu%20erro." ' +
+        'target="_blank" rel="noopener" style="color:#e08888;text-decoration:underline">Fala com a gente no WhatsApp</a> ' +
+        'que a gente resolve por lá.';
       statusMsg.className = 'error';
       submitBtn.disabled = false;
       submitBtn.textContent = 'enviar briefing →';

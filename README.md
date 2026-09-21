@@ -1,22 +1,57 @@
 # Landing page de briefing — nullvision
 
-Página única (`index.html`), sem dependências externas além de fontes do Google (carregam normal quando publicada — só não carregam aqui no ambiente de teste, sem internet). Cliente escolhe a categoria (Cinematic/Motion/Design), preenche o formulário (só nome e e-mail são obrigatórios, o resto é opcional/livre) e envia — o envio vai direto pro e-mail da empresa via [Formspree](https://formspree.io) (chave já configurada: `mgaevdgg`). Uma cópia é encaminhada automaticamente pro Gmail pessoal do Matheus (configurado nas próprias configurações do Gmail da empresa) — é essa cópia que o Claude lê pra processar os briefings.
+Página única (`index.html`), sem dependências externas além das fontes do Google. O cliente escolhe a
+categoria (Cinematic/Motion/Design), preenche o formulário (só nome e e-mail são obrigatórios, o resto
+é opcional/livre) e envia — o envio vai direto pro e-mail da empresa via
+[Formspree](https://formspree.io), chave `mgaevdgg`. Uma cópia é encaminhada automaticamente pro Gmail
+pessoal do Matheus (configurado nas próprias configurações do Gmail da empresa) — é essa cópia que o
+Claude lê pra processar os briefings.
 
-## Publicar no GitHub Pages (~5 min, sem conta técnica)
+**No ar em:** https://nullvision-ai.github.io/projectbriefing/ — é esse o link da bio do Instagram.
 
-1. Crie uma conta em [github.com](https://github.com) (se ainda não tiver).
-2. Crie um repositório novo — pode chamar `nullvision-briefing` — marcado como **Public** (Pages grátis exige público em conta free).
-3. Nesse repositório, clique em **Add file → Upload files** e suba o arquivo `index.html` (direto na raiz do repositório, não dentro de subpasta).
-4. Vá em **Settings → Pages**. Em "Build and deployment", selecione **Deploy from a branch**, branch **main**, pasta **/ (root)**. Salve.
-5. Espere ~1 minuto. O GitHub mostra a URL pública, algo como `https://SEU-USUARIO.github.io/nullvision-briefing/`.
-6. Acesse essa URL, preencha o formulário de teste e envie. O Formspree manda um e-mail de **confirmação** pro e-mail da empresa na primeira submissão — precisa clicar no link de confirmação pra ativar o recebimento definitivo dos briefings.
+## Atenção: repositório duplicado
 
-Depois disso, é só divulgar esse link (bio do Instagram, WhatsApp, proposta comercial) — todo briefing enviado cai direto no e-mail da empresa, com o assunto `Novo briefing — [Categoria] — [Nome do projeto]`.
+Existe um segundo repositório, `contatomateusaraujom-ctrl/nullvision-briefing`, que foi a primeira
+tentativa de publicação. Ele **também está no ar** e aponta para um formulário Formspree **diferente**
+(`mgaevrln`) — qualquer briefing enviado por lá cai numa caixa que ninguém acompanha.
+
+Este repositório (`nullvision-ai/projectbriefing`) é o oficial. O outro deve servir apenas como
+redirecionamento, nunca como cópia paralela do formulário.
+
+## Arquivos
+
+| Arquivo | O que é |
+|---|---|
+| `index.html` | a landing page do briefing |
+| `og-image.png` | imagem de preview (1200×630) ao compartilhar o link |
+| `nullvision_brand_identity_v2.html` | referência de identidade visual |
+| `nullvision_graphic_elements.html` | elementos gráficos da marca |
+
+## Publicar uma alteração
+
+A pasta local é um clone deste repositório, então publicar é commitar e dar push:
+
+```bash
+git add -A
+git commit -m "descrição do que mudou"
+git push
+```
+
+O GitHub Pages republica sozinho em ~1 minuto. Não subir arquivo pela interface web do GitHub: foi
+assim que a versão local e a publicada acabaram divergindo sem ninguém perceber.
+
+Depois de mexer no `<head>`, vale limpar o cache de preview do WhatsApp/Facebook em
+[developers.facebook.com/tools/debug](https://developers.facebook.com/tools/debug/) — senão o preview
+antigo fica grudado por dias.
 
 ## Como o Claude processa os briefings automaticamente
 
-O e-mail da empresa encaminha automaticamente uma cópia de cada briefing pro Gmail pessoal do Matheus (Configurações do Gmail → Forwarding and POP/IMAP). O Claude lê essa cópia numa rotina automática, atualiza `docs/06_CLIENTES.md` / `docs/07_PROJETOS.md` e só notifica o Matheus quando chega algo novo — silencioso no resto do tempo.
+O e-mail da empresa encaminha automaticamente uma cópia de cada briefing pro Gmail pessoal do Matheus
+(Configurações do Gmail → Forwarding and POP/IMAP). O Claude lê essa cópia numa rotina automática,
+atualiza `docs/06_CLIENTES.md` / `docs/07_PROJETOS.md` e só notifica o Matheus quando chega algo novo —
+silencioso no resto do tempo.
 
 ## Editar o formulário depois
 
-Todo o conteúdo (perguntas, categorias, textos) está em HTML/CSS/JS simples dentro de `index.html` — qualquer ajuste pode ser pedido ao Claude, que edita o arquivo e você re-sobe no GitHub (ou substitui o arquivo direto pela interface do GitHub, sem precisar mexer em nada técnico).
+Todo o conteúdo (perguntas, categorias, textos) está em HTML/CSS/JS simples dentro de `index.html` —
+qualquer ajuste pode ser pedido ao Claude, que edita o arquivo e publica com o comando acima.
